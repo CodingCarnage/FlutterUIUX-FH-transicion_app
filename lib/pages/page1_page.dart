@@ -29,8 +29,8 @@ class Page1Page extends StatelessWidget {
         Animation<double> animation, 
         Animation<double> secondaryAnimation
       ) => Page2Page(),
-      // transitionDuration: Duration(seconds: 2),
-      // reverseTransitionDuration: Duration(seconds: 2),
+      transitionDuration: Duration(seconds: 2),
+      reverseTransitionDuration: Duration(seconds: 2),
       transitionsBuilder: (
         context, 
         animation, 
@@ -50,9 +50,16 @@ class Page1Page extends StatelessWidget {
         //   turns: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
         //   child: child,
         // );
-        return FadeTransition(
-          opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
-          child: child,
+        // return FadeTransition(
+        //   opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
+        //   child: child,
+        // );
+        return RotationTransition(
+          turns: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
+          child: FadeTransition(
+            opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
+            child: child,
+          ),
         );
       },
     );
